@@ -1,5 +1,10 @@
 import fastify from 'fastify'
+import { clientsRoutes } from './routes/clients.routes'
 const app = fastify({ logger: false })
+
+app.register(clientsRoutes, {
+  prefix: 'clients',
+})
 
 const start = async () => {
   try {
