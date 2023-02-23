@@ -6,7 +6,7 @@ export class AuthenticateUserRepository implements ICommonRepository {
     return await prisma.clients.findFirst({
       where: {
         username: {
-          contains: username,
+          equals: username,
           mode: 'insensitive',
         },
       },
