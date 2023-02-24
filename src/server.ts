@@ -1,5 +1,6 @@
 import fastify from 'fastify'
-import { AuthRoutes } from './routes/auth.routes'
+import { authDeliverymanRoutes } from './routes/authDeliveryman.routes'
+import { AuthClientRoutes } from './routes/authUser.routes'
 import { clientsRoutes } from './routes/clients.routes'
 import { deliverymanRoutes } from './routes/deliveryman.routes'
 const app = fastify({ logger: false })
@@ -8,12 +9,16 @@ app.register(clientsRoutes, {
   prefix: 'clients',
 })
 
-app.register(AuthRoutes, {
-  prefix: 'auth',
+app.register(AuthClientRoutes, {
+  prefix: 'client/auth',
 })
 
 app.register(deliverymanRoutes, {
   prefix: 'deliveryman',
+})
+
+app.register(authDeliverymanRoutes, {
+  prefix: 'deliveryman/auth',
 })
 
 const start = async () => {

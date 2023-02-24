@@ -1,5 +1,5 @@
-import { prisma } from '../../../../database/prismaClient'
-import { ICommonRepository } from '../../../CommonRepository/UserCommonRepository'
+import { prisma } from '../../../../../database/prismaClient'
+import { ICommonRepository } from '../../../../CommonRepository/UserCommonRepository'
 
 export class AuthenticateUserRepository implements ICommonRepository {
   async findByUsername(username: string) {
