@@ -12,7 +12,7 @@ export class CreateClientService {
   }
 
   async execute({ username, password }: ICreateClientDTO) {
-    const clientExists = await this.clientRepository.findByUsername()
+    const clientExists = await this.clientRepository.findByUsername(username)
 
     if (clientExists) {
       throw new Error('Client already exists')
