@@ -20,7 +20,8 @@ export class CreateDeliveryController {
         deliveryRepository,
       )
 
-      const { id_client, item_name } = request.body
+      const { id_client } = request
+      const { item_name } = request.body
 
       const delivery = await createDeliveryService.execute({
         id_client,
