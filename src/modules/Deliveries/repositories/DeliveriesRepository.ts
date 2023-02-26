@@ -43,6 +43,29 @@ class DeliveriesRepository {
       },
     })
   }
+
+  async updateEndDate({ id_delivery, id_deliveryman }: IUpdateDeliverymanDTO) {
+    const { count } = await prisma.deliveries.updateMany({
+      where: {
+        id: id_delivery,
+        id_deliveryman,
+      },
+      data: {
+        end_at: new Date(),
+      },
+    })
+
+    if (count <= 0) {
+      throw new Error('No records updated')
+    }
+
+    return await prisma.deliveries.findMany({
+      where: {
+        id: id_delivery,
+        id_deliveryman,
+      },
+    })
+  }
 }
 
 export default DeliveriesRepository
