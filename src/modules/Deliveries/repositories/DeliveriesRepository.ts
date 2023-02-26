@@ -15,6 +15,14 @@ class DeliveriesRepository {
       },
     })
   }
+
+  async findDeliveryWithEndDateNull() {
+    return await prisma.deliveries.findMany({
+      where: {
+        end_at: null,
+      },
+    })
+  }
 }
 
 export default DeliveriesRepository
