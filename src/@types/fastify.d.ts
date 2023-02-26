@@ -3,5 +3,6 @@ import fastify from 'fastify'
 declare module 'fastify' {
   export interface FastifyRequest {
     id_client: string
+    id_deliveryman: string
   }
 }
