@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { prisma } from '../../../database/prismaClient'
 import { ICommonRepository } from '../../CommonRepository/UserCommonRepository'
 
@@ -23,6 +24,19 @@ class ClientRepository implements ICommonRepository {
           equals: username,
           mode: 'insensitive',
         },
+      },
+    })
+  }
+
+  async getDeliveriesByIdClient(id_client: string) {
+    return await prisma.clients.findMany({
+      where: {
+        id: id_client,
+      },
+      select: {
+        deliveries: true,
+        id: true,
+        username: true,
       },
     })
   }
